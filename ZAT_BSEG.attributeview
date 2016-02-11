@@ -2,13 +2,13 @@
 <Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="ZAT_BSEG" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
   <origin/>
   <descriptions defaultDescription="ZAT_BSEG"/>
-  <metadata changedAt="2015-03-26 13:54:32.866"/>
+  <metadata changedAt="2016-02-11 13:13:34.602"/>
   <attributes>
-    <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+    <attribute id="MANDT" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
       <descriptions defaultDescription="MANDT"/>
       <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="MANDT"/>
     </attribute>
-    <attribute id="BUKRS" order="2" attributeHierarchyActive="false" displayAttribute="false">
+    <attribute id="BUKRS" key="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
       <descriptions defaultDescription="BUKRS"/>
       <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="BUKRS"/>
     </attribute>
@@ -79,16 +79,40 @@
       <tableProxy>
         <table schemaName="SAPR3" columnObjectName="BSEG"/>
       </tableProxy>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="BKPF"/>
+      </tableProxy>
     </tableProxies>
-    <joins/>
+    <joins>
+      <join>
+        <leftTable schemaName="SAPR3" columnObjectName="BSEG"/>
+        <rightTable schemaName="SAPR3" columnObjectName="BKPF"/>
+        <leftColumns>
+          <columnName>MANDT</columnName>
+          <columnName>BUKRS</columnName>
+          <columnName>BELNR</columnName>
+          <columnName>GJAHR</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>MANDT</columnName>
+          <columnName>BUKRS</columnName>
+          <columnName>BELNR</columnName>
+          <columnName>GJAHR</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+    </joins>
     <layout>
       <shapes>
         <shape modelObjectName="BSEG" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
           <upperLeftCorner x="70" y="30"/>
         </shape>
+        <shape modelObjectName="BKPF" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="310" y="30"/>
+        </shape>
         <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
           <upperLeftCorner x="40" y="85"/>
-          <rectangleSize/>
+          <rectangleSize height="0" width="0"/>
         </shape>
       </shapes>
     </layout>
