@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cube:cube xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Cube="http://www.sap.com/ndb/BiModelCube.ecore" xmlns:Privilege="http://www.sap.com/ndb/BiModelPrivilege.ecore" schemaVersion="1.5" id="ZAN_TEST" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="reportingEnabled">
+  <origin/>
+  <descriptions defaultDescription="ZAN_TEST"/>
+  <metadata changedAt="2015-09-04 16:22:23.322"/>
+  <defaultSchema schemaName="P00109793"/>
+  <localVariables>
+    <variable id="V_SPMON">
+      <descriptions defaultDescription="V_SPMON"/>
+      <variableProperties datatype="CHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="SPMON"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <privateMeasureGroup id="MeasureGroup">
+    <attributes>
+      <attribute id="SSOUR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SSOUR"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SSOUR"/>
+      </attribute>
+      <attribute id="VRSIO" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VRSIO"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="VRSIO"/>
+      </attribute>
+      <attribute id="SPMON" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPMON"/>
+        <localVariable>#V_SPMON</localVariable>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SPMON"/>
+      </attribute>
+      <attribute id="SPTAG" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPTAG"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SPTAG"/>
+      </attribute>
+      <attribute id="SPWOC" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPWOC"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SPWOC"/>
+      </attribute>
+      <attribute id="SPBUP" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPBUP"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SPBUP"/>
+      </attribute>
+      <attribute id="MATNR" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATNR"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="MATNR"/>
+      </attribute>
+      <attribute id="PERIV" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERIV"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="PERIV"/>
+      </attribute>
+      <attribute id="SPRAS" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPRAS"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="MAKT" columnName="SPRAS"/>
+      </attribute>
+      <attribute id="MAKTX" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MAKTX"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="MAKT" columnName="MAKTX"/>
+      </attribute>
+      <attribute id="PKUNAG" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PKUNAG"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="PKUNAG"/>
+      </attribute>
+      <attribute id="VKORG_1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKORG_1"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="VKORG"/>
+      </attribute>
+      <attribute id="VTWEG_1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VTWEG_1"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="VTWEG"/>
+      </attribute>
+      <attribute id="SPART_1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPART_1"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SPART"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies>
+        <tableProxy centralTable="true">
+          <table schemaName="SAPR3" columnObjectName="S970"/>
+        </tableProxy>
+        <tableProxy>
+          <table schemaName="SAPR3" columnObjectName="MAKT"/>
+        </tableProxy>
+      </tableProxies>
+      <joins>
+        <join>
+          <leftTable schemaName="SAPR3" columnObjectName="S970"/>
+          <rightTable schemaName="SAPR3" columnObjectName="MAKT"/>
+          <leftColumns>
+            <columnName>MANDT</columnName>
+            <columnName>MATNR</columnName>
+          </leftColumns>
+          <rightColumns>
+            <columnName>MANDT</columnName>
+            <columnName>MATNR</columnName>
+          </rightColumns>
+          <properties joinOperator="Equal" joinType="referential"/>
+        </join>
+      </joins>
+      <layout>
+        <shapes>
+          <shape modelObjectName="S970" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+            <upperLeftCorner x="70" y="30"/>
+          </shape>
+          <shape modelObjectName="MAKT" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+            <upperLeftCorner x="310" y="30"/>
+          </shape>
+        </shapes>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="ZZGRS" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZGRS"/>
+        <measureMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZGRS"/>
+      </measure>
+      <measure id="ZZSAMT" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZSAMT"/>
+        <measureMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZSAMT"/>
+      </measure>
+      <measure id="ZZVOL" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZVOL"/>
+        <measureMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZVOL"/>
+      </measure>
+      <measure id="ZZYTDGRS" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZYTDGRS"/>
+        <measureMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZYTDGRS"/>
+      </measure>
+      <measure id="ZZYTDSAMT" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZYTDSAMT"/>
+        <measureMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZYTDSAMT"/>
+      </measure>
+      <measure id="ZZYTDVOL" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZYTDVOL"/>
+        <measureMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZYTDVOL"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures>
+      <measure id="CY_VALUES" hidden="false" order="17" baseMeasure="#ZZGRS">
+        <descriptions defaultDescription="CY_VALUES"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="SPMON">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="200401"/>
+          </filter>
+          <attributeName>SPMON</attributeName>
+        </restriction>
+      </measure>
+      <measure id="LY_VALUES" hidden="false" order="18" baseMeasure="#ZZGRS">
+        <descriptions defaultDescription="LY_VALUES"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="SPMON">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="200301"/>
+          </filter>
+          <attributeName>SPMON</attributeName>
+        </restriction>
+      </measure>
+    </restrictedMeasures>
+    <sharedDimensions>
+      <logicalJoin associatedObjectUri="/zzsd_hana/attributeviews/AT_CUSTOMER">
+        <attributes>
+          <attributeRef>#PKUNAG</attributeRef>
+          <attributeRef>#VKORG_1</attributeRef>
+          <attributeRef>#VTWEG_1</attributeRef>
+          <attributeRef>#SPART_1</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>KUNNR</attributeName>
+          <attributeName>VKORG</attributeName>
+          <attributeName>VTWEG</attributeName>
+          <attributeName>SPART</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinOperator="Equal" joinType="inner"/>
+        <associatedAttributeFeatures/>
+      </logicalJoin>
+    </sharedDimensions>
+    <layout>
+      <shapes>
+        <shape modelObjectName="MEASURE_GROUP" modelObjectType="repository">
+          <upperLeftCorner x="300" y="200"/>
+        </shape>
+        <shape modelObjectName="/zzsd_hana/attributeviews/AT_CUSTOMER" modelObjectType="repository">
+          <upperLeftCorner x="657" y="34"/>
+        </shape>
+        <shape modelObjectName="LogicalView" modelObjectNameSpace="MeasureGroup" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateMeasureGroup>
+</Cube:cube>

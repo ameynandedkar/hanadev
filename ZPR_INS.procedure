@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UDE:Procedure xmlns:UDE="http://www.sap.com/ndb/SQLCoreModelUDE.ecore" schemaVersion="1" id="ZPR_INS" runWithInvokerPrivileges="false" accessMode="ReadOnly">
+  <origin/>
+  <descriptions defaultDescription="ZPR_INS"/>
+  <metadata changedAt="2015-10-30 14:44:00.083" createdAt="2015-10-30 11:51:57.512"/>
+  <schema id="_SYS_BIC"/>
+  <definition>
+ /********* Begin Procedure Script ************/ 
+BEGIN 
+declare v_idx int;
+	FOR v_idx in 1 .. 2 DO
+		insert into &quot;SAPR3&quot;.&quot;ZWPS_SD01&quot; values ('333','DBU',:v_idx,'10','30102015','30102015','A');
+	END FOR;
+	
+END;
+ /********* End Procedure Script ************/</definition>
+  <defaultSchema schemaName="ASIANPAINTS"/>
+</UDE:Procedure>

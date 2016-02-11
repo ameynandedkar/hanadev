@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="ZCV_SALES_REP" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="SCRIPT_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" scriptParametersCaseSensitive="true">
+  <origin/>
+  <descriptions defaultDescription="ZCV_SALES_REP"/>
+  <metadata changedAt="2016-01-04 15:18:06.591"/>
+  <localVariables>
+    <variable id="SPMON" parameter="true">
+      <descriptions defaultDescription="SPMON"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="000000" length="6" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <dataSources/>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:SqlScriptView" id="Script_View">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute datatype="VARCHAR" id="NAME_1" length="30"/>
+        <viewAttribute datatype="VARCHAR" id="NAME_2" length="30"/>
+        <viewAttribute datatype="VARCHAR" id="HKUNNR" length="10"/>
+        <viewAttribute datatype="VARCHAR" id="KUNNR" length="10"/>
+        <viewAttribute datatype="VARCHAR" id="NAME1" length="35"/>
+        <viewAttribute datatype="VARCHAR" id="VKBUR" length="4"/>
+        <viewAttribute datatype="VARCHAR" id="VKORG" length="4"/>
+        <viewAttribute datatype="VARCHAR" id="VTWEG" length="2"/>
+        <viewAttribute datatype="VARCHAR" id="SPART" length="2"/>
+        <viewAttribute datatype="VARCHAR" id="PROD" length="4"/>
+        <viewAttribute datatype="VARCHAR" id="SHADE" length="4"/>
+        <viewAttribute datatype="VARCHAR" id="PACK" length="3"/>
+        <viewAttribute datatype="VARCHAR" id="ATWTB" length="30"/>
+        <viewAttribute datatype="VARCHAR" id="MATNR" length="18"/>
+        <viewAttribute datatype="VARCHAR" id="MAKTX" length="40"/>
+        <viewAttribute datatype="VARCHAR" id="MON" length="2"/>
+        <viewAttribute datatype="DECIMAL" id="VOL_CY1" length="15" scale="3"/>
+        <viewAttribute datatype="DECIMAL" id="VOL_LY1" length="15" scale="3"/>
+        <viewAttribute datatype="DECIMAL" id="VOL_GR" length="15" scale="3"/>
+        <viewAttribute datatype="DECIMAL" id="GRS_CY1" length="19" scale="2"/>
+        <viewAttribute datatype="DECIMAL" id="GRS_LY1" length="19" scale="2"/>
+        <viewAttribute datatype="DECIMAL" id="GRS_GR" length="19" scale="2"/>
+        <viewAttribute datatype="DECIMAL" id="SAMT_CY1" length="19" scale="2"/>
+        <viewAttribute datatype="DECIMAL" id="SAMT_LY1" length="19" scale="2"/>
+        <viewAttribute datatype="DECIMAL" id="SAMT_GR" length="19" scale="2"/>
+        <viewAttribute datatype="DECIMAL" id="YTD_VOL_CY1" length="15" scale="3"/>
+        <viewAttribute datatype="DECIMAL" id="YTD_VOL_LY1" length="15" scale="3"/>
+        <viewAttribute datatype="DECIMAL" id="YTD_VOL_GR" length="15" scale="3"/>
+        <viewAttribute datatype="DECIMAL" id="YTD_GRS_CY1" length="19" scale="2"/>
+        <viewAttribute datatype="DECIMAL" id="YTD_GRS_LY1" length="19" scale="2"/>
+        <viewAttribute datatype="DECIMAL" id="YTD_GRS_GR" length="19" scale="2"/>
+        <viewAttribute datatype="DECIMAL" id="YTD_SAMT_CY1" length="19" scale="2"/>
+        <viewAttribute datatype="DECIMAL" id="YTD_SAMT_LY1" length="19" scale="2"/>
+        <viewAttribute datatype="DECIMAL" id="YTD_SAMT_GR" length="19" scale="2"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <localVariable>#SPMON</localVariable>
+      <definition> 
+ /********* Begin Procedure Script ************/ 
+ BEGIN
+ declare v_spmon, v_spmon_l varchar(30);
+ declare v_spmon1, v_spmon2, v_spmon_l1, v_spmon_l2 varchar(6); 
+ declare c_date varchar(8);
+ 
+ c_date := to_varchar(current_date,'YYYYMMDD');
+ if right(:spmon,2) = '00' then 
+ 	v_spmon := left(:c_date,6);
+ else
+ 	v_spmon := :spmon;
+ end if;	
+ v_spmon_l := concat(left(:v_spmon,4)-1,right(:v_spmon,2));
+ 
+ if right(:v_spmon,2) = '01' then
+ 	v_spmon1 := concat(left(:v_spmon_l,4),'12');
+ else
+ 	v_spmon1 := concat(left(:v_spmon,4),right(:v_spmon,2)-1);
+ end if; 
+ v_spmon_l1 := concat(left(:v_spmon1,4)-1,right(:v_spmon1,2));
+
+ if right(:v_spmon1,2) = '01' then
+ 	v_spmon2 := concat(left(:v_spmon_l1,4),'12');
+ else
+ 	v_spmon2 := concat(left(:v_spmon1,4),right(:v_spmon1,2)-1);
+ end if;
+ v_spmon_l2 := concat(left(:v_spmon2,4)-1,right(:v_spmon2,2));
+ 
+ v_spmon := concat(:v_spmon,',');
+ v_spmon := concat(:v_spmon,:v_spmon1);
+ v_spmon := concat(:v_spmon,',');
+ v_spmon := concat(:v_spmon,:v_spmon2);
+ v_spmon_l := concat(:v_spmon_l,',');
+ v_spmon_l := concat(:v_spmon_l,:v_spmon_l1);
+ v_spmon_l := concat(:v_spmon_l,',');
+ v_spmon_l := concat(:v_spmon_l,:v_spmon_l2);
+ 	 var_out = SELECT 
+ 	 &quot;DIV&quot; as &quot;NAME_1&quot;, &quot;REG&quot; as &quot;NAME_2&quot;, &quot;HKUNNR&quot;, &quot;KUNNR&quot;, &quot;NAME1&quot;, &quot;VKBUR&quot;, &quot;VKORG&quot;, &quot;VTWEG&quot;, &quot;SPART&quot;, &quot;PROD&quot;, &quot;SHADE&quot;, &quot;PACK&quot;, &quot;ATWTB&quot;, &quot;MATNR&quot;, &quot;MAKTX&quot;, &quot;MON&quot;, 
+ 	 sum(&quot;VOL_CY1&quot;) AS &quot;VOL_CY1&quot;, sum(&quot;VOL_LY1&quot;) AS &quot;VOL_LY1&quot;, sum(&quot;VOL_GR&quot;) AS &quot;VOL_GR&quot;, sum(&quot;GRS_CY1&quot;) AS &quot;GRS_CY1&quot;, sum(&quot;GRS_LY1&quot;) AS &quot;GRS_LY1&quot;, sum(&quot;GRS_GR&quot;) AS &quot;GRS_GR&quot;, sum(&quot;SAMT_CY1&quot;) AS &quot;SAMT_CY1&quot;, sum(&quot;SAMT_LY1&quot;) AS &quot;SAMT_LY1&quot;, sum(&quot;SAMT_GR&quot;) AS &quot;SAMT_GR&quot;, sum(&quot;YTD_VOL_CY1&quot;) AS &quot;YTD_VOL_CY1&quot;, sum(&quot;YTD_VOL_LY1&quot;) AS &quot;YTD_VOL_LY1&quot;, 
+ 	 sum(&quot;YTD_VOL_GR&quot;) AS &quot;YTD_VOL_GR&quot;, sum(&quot;YTD_GRS_CY1&quot;) AS &quot;YTD_GRS_CY1&quot;, sum(&quot;YTD_GRS_LY1&quot;) AS &quot;YTD_GRS_LY1&quot;, sum(&quot;YTD_GRS_GR&quot;) AS &quot;YTD_GRS_GR&quot;, sum(&quot;YTD_SAMT_CY1&quot;) AS &quot;YTD_SAMT_CY1&quot;, sum(&quot;YTD_SAMT_LY1&quot;) AS &quot;YTD_SAMT_LY1&quot;, sum(&quot;YTD_SAMT_GR&quot;) AS &quot;YTD_SAMT_GR&quot; 
+FROM &quot;_SYS_BIC&quot;.&quot;zzsd_hana/ZCV_SALES_S970&quot; ( PLACEHOLDER.&quot;$$P_DATE$$&quot; => :c_date, PLACEHOLDER.&quot;$$CY_SPMON$$&quot; => :v_spmon, PLACEHOLDER.&quot;$$LY_SPMON$$&quot; => :v_spmon_l ) 
+GROUP BY &quot;DIV&quot;, &quot;REG&quot;, &quot;HKUNNR&quot;, &quot;KUNNR&quot;, &quot;NAME1&quot;, &quot;VKBUR&quot;, &quot;VKORG&quot;, &quot;VTWEG&quot;, &quot;SPART&quot;, &quot;PROD&quot;, &quot;SHADE&quot;, &quot;PACK&quot;, &quot;ATWTB&quot;, &quot;MATNR&quot;, &quot;MAKTX&quot;, &quot;MON&quot;;
+
+END /********* End Procedure Script ************/</definition>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Script_View">
+    <descriptions/>
+    <attributes>
+      <attribute id="NAME_1" order="1">
+        <descriptions defaultDescription="NAME_1"/>
+        <keyMapping columnObjectName="Script_View" columnName="NAME_1"/>
+      </attribute>
+      <attribute id="NAME_2" order="2">
+        <descriptions defaultDescription="NAME_2"/>
+        <keyMapping columnObjectName="Script_View" columnName="NAME_2"/>
+      </attribute>
+      <attribute id="HKUNNR" order="3">
+        <descriptions defaultDescription="HKUNNR"/>
+        <keyMapping columnObjectName="Script_View" columnName="HKUNNR"/>
+      </attribute>
+      <attribute id="KUNNR" order="4">
+        <descriptions defaultDescription="KUNNR"/>
+        <keyMapping columnObjectName="Script_View" columnName="KUNNR"/>
+      </attribute>
+      <attribute id="NAME1" order="5">
+        <descriptions defaultDescription="NAME1"/>
+        <keyMapping columnObjectName="Script_View" columnName="NAME1"/>
+      </attribute>
+      <attribute id="VKBUR" order="6">
+        <descriptions defaultDescription="VKBUR"/>
+        <keyMapping columnObjectName="Script_View" columnName="VKBUR"/>
+      </attribute>
+      <attribute id="VKORG" order="7">
+        <descriptions defaultDescription="VKORG"/>
+        <keyMapping columnObjectName="Script_View" columnName="VKORG"/>
+      </attribute>
+      <attribute id="VTWEG" order="8">
+        <descriptions defaultDescription="VTWEG"/>
+        <keyMapping columnObjectName="Script_View" columnName="VTWEG"/>
+      </attribute>
+      <attribute id="SPART" order="9">
+        <descriptions defaultDescription="SPART"/>
+        <keyMapping columnObjectName="Script_View" columnName="SPART"/>
+      </attribute>
+      <attribute id="PROD" order="10">
+        <descriptions defaultDescription="PROD"/>
+        <keyMapping columnObjectName="Script_View" columnName="PROD"/>
+      </attribute>
+      <attribute id="SHADE" order="11">
+        <descriptions defaultDescription="SHADE"/>
+        <keyMapping columnObjectName="Script_View" columnName="SHADE"/>
+      </attribute>
+      <attribute id="PACK" order="12">
+        <descriptions defaultDescription="PACK"/>
+        <keyMapping columnObjectName="Script_View" columnName="PACK"/>
+      </attribute>
+      <attribute id="ATWTB" order="13">
+        <descriptions defaultDescription="ATWTB"/>
+        <keyMapping columnObjectName="Script_View" columnName="ATWTB"/>
+      </attribute>
+      <attribute id="MATNR" order="14">
+        <descriptions defaultDescription="MATNR"/>
+        <keyMapping columnObjectName="Script_View" columnName="MATNR"/>
+      </attribute>
+      <attribute id="MAKTX" order="15">
+        <descriptions defaultDescription="MAKTX"/>
+        <keyMapping columnObjectName="Script_View" columnName="MAKTX"/>
+      </attribute>
+      <attribute id="MON" order="16">
+        <descriptions defaultDescription="MON"/>
+        <keyMapping columnObjectName="Script_View" columnName="MON"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="VOL_CY1" order="17" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VOL_CY1"/>
+        <measureMapping columnObjectName="Script_View" columnName="VOL_CY1"/>
+      </measure>
+      <measure id="VOL_LY1" order="18" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VOL_LY2"/>
+        <measureMapping columnObjectName="Script_View" columnName="VOL_LY1"/>
+      </measure>
+      <measure id="VOL_GR" order="19" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VOL_GR"/>
+        <measureMapping columnObjectName="Script_View" columnName="VOL_GR"/>
+      </measure>
+      <measure id="GRS_CY1" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="GRS_CY1"/>
+        <measureMapping columnObjectName="Script_View" columnName="GRS_CY1"/>
+      </measure>
+      <measure id="GRS_LY1" order="21" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="GRS_LY1"/>
+        <measureMapping columnObjectName="Script_View" columnName="GRS_LY1"/>
+      </measure>
+      <measure id="GRS_GR" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="GRS_GR"/>
+        <measureMapping columnObjectName="Script_View" columnName="GRS_GR"/>
+      </measure>
+      <measure id="SAMT_CY1" order="23" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SAMT_CY1"/>
+        <measureMapping columnObjectName="Script_View" columnName="SAMT_CY1"/>
+      </measure>
+      <measure id="SAMT_LY1" order="24" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SAMT_LY1"/>
+        <measureMapping columnObjectName="Script_View" columnName="SAMT_LY1"/>
+      </measure>
+      <measure id="SAMT_GR" order="25" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SAMT_GR"/>
+        <measureMapping columnObjectName="Script_View" columnName="SAMT_GR"/>
+      </measure>
+      <measure id="YTD_VOL_CY1" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="YTD_VOL_CY1"/>
+        <measureMapping columnObjectName="Script_View" columnName="YTD_VOL_CY1"/>
+      </measure>
+      <measure id="YTD_VOL_LY1" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="YTD_VOL_LY1"/>
+        <measureMapping columnObjectName="Script_View" columnName="YTD_VOL_LY1"/>
+      </measure>
+      <measure id="YTD_VOL_GR" order="28" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="YTD_VOL_GR"/>
+        <measureMapping columnObjectName="Script_View" columnName="YTD_VOL_GR"/>
+      </measure>
+      <measure id="YTD_GRS_CY1" order="29" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="YTD_GRS_CY1"/>
+        <measureMapping columnObjectName="Script_View" columnName="YTD_GRS_CY1"/>
+      </measure>
+      <measure id="YTD_GRS_LY1" order="30" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="YTD_GRS_LY1"/>
+        <measureMapping columnObjectName="Script_View" columnName="YTD_GRS_LY1"/>
+      </measure>
+      <measure id="YTD_GRS_GR" order="31" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="YTD_GRS_GR"/>
+        <measureMapping columnObjectName="Script_View" columnName="YTD_GRS_GR"/>
+      </measure>
+      <measure id="YTD_SAMT_CY1" order="32" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="YTD_SAMT_CY1"/>
+        <measureMapping columnObjectName="Script_View" columnName="YTD_SAMT_CY1"/>
+      </measure>
+      <measure id="YTD_SAMT_LY1" order="33" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="YTD_SAMT_LY1"/>
+        <measureMapping columnObjectName="Script_View" columnName="YTD_SAMT_LY1"/>
+      </measure>
+      <measure id="YTD_SAMT_GR" order="34" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="YTD_SAMT_GR"/>
+        <measureMapping columnObjectName="Script_View" columnName="YTD_SAMT_GR"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

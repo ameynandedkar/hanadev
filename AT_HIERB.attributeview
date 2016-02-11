@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_HIERB" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_HIERB"/>
+  <metadata changedAt="2016-01-04 15:11:27.641"/>
+  <attributes>
+    <attribute id="NAME" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="NAME"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="MCSHIERB" columnName="NAME"/>
+    </attribute>
+    <attribute id="NAME_1" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="NAME_1"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="MCSHIERB" alias="MCSHIERB_1" columnName="NAME"/>
+    </attribute>
+    <attribute id="NAME_2" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="NAME_2"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="MCSHIERB" alias="MCSHIERB_2" columnName="NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="DIV" hidden="false" order="4" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="DIV"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
+        <formula>replace(&quot;NAME_2&quot;,'Division - ','')</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="REG" hidden="false" order="5" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="REG"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="30">
+        <formula>replace(&quot;NAME_1&quot;,'Region - ','')</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="MCSHIERB"/>
+        <columnFilter columnName="APPL">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="MCS"/>
+        </columnFilter>
+        <columnFilter columnName="HNAME">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="DBU"/>
+        </columnFilter>
+        <columnFilter columnName="MANDT">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="333"/>
+        </columnFilter>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="MCSHIERB" alias="MCSHIERB_1"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="MCSHIERB" alias="MCSHIERB_2"/>
+      </tableProxy>
+    </tableProxies>
+    <joins>
+      <join>
+        <leftTable schemaName="SAPR3" columnObjectName="MCSHIERB"/>
+        <rightTable schemaName="SAPR3" columnObjectName="MCSHIERB" alias="MCSHIERB_1"/>
+        <leftColumns>
+          <columnName>MANDT</columnName>
+          <columnName>APPL</columnName>
+          <columnName>HNAME</columnName>
+          <columnName>PARENT</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>MANDT</columnName>
+          <columnName>APPL</columnName>
+          <columnName>HNAME</columnName>
+          <columnName>ID</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+      <join>
+        <leftTable schemaName="SAPR3" columnObjectName="MCSHIERB" alias="MCSHIERB_1"/>
+        <rightTable schemaName="SAPR3" columnObjectName="MCSHIERB" alias="MCSHIERB_2"/>
+        <leftColumns>
+          <columnName>MANDT</columnName>
+          <columnName>APPL</columnName>
+          <columnName>HNAME</columnName>
+          <columnName>PARENT</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>MANDT</columnName>
+          <columnName>APPL</columnName>
+          <columnName>HNAME</columnName>
+          <columnName>ID</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+    </joins>
+    <layout>
+      <shapes>
+        <shape modelObjectName="MCSHIERB" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="70" y="30"/>
+        </shape>
+        <shape modelObjectName="MCSHIERB_1" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="310" y="30"/>
+        </shape>
+        <shape modelObjectName="MCSHIERB_2" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="597" y="30"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

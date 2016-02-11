@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_VIEW_S970" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_VIEW_S970"/>
+  <metadata changedAt="2015-09-02 16:32:00.404"/>
+  <attributes>
+    <attribute id="VKORG" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="VKORG"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="VKORG"/>
+    </attribute>
+    <attribute id="VTWEG" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="VTWEG"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="VTWEG"/>
+    </attribute>
+    <attribute id="SPART" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="SPART"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SPART"/>
+    </attribute>
+    <attribute id="MANDT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="MANDT"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="MANDT"/>
+    </attribute>
+    <attribute id="SSOUR" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="SSOUR"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SSOUR"/>
+    </attribute>
+    <attribute id="VRSIO" order="6" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="VRSIO"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="VRSIO"/>
+    </attribute>
+    <attribute id="SPMON" order="7" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="SPMON"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SPMON"/>
+    </attribute>
+    <attribute id="SPTAG" order="8" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="SPTAG"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SPTAG"/>
+    </attribute>
+    <attribute id="PKUNAG" order="9" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="PKUNAG"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="PKUNAG"/>
+    </attribute>
+    <attribute id="MATNR" order="10" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="MATNR"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="MATNR"/>
+    </attribute>
+    <attribute id="PERIV" order="11" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="PERIV"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="PERIV"/>
+    </attribute>
+    <attribute id="ZZGRS" order="12" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ZZGRS"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZGRS"/>
+    </attribute>
+    <attribute id="ZZSAMT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ZZSAMT"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZSAMT"/>
+    </attribute>
+    <attribute id="ZZVOL" order="14" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ZZVOL"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZVOL"/>
+    </attribute>
+    <attribute id="ZZYTDSAMT" order="15" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ZZYTDSAMT"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZYTDSAMT"/>
+    </attribute>
+    <attribute id="ZZYTDVOL" order="16" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ZZYTDVOL"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZYTDVOL"/>
+    </attribute>
+    <attribute id="ZZYTDQTY" order="17" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ZZYTDQTY"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZYTDQTY"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="S970"/>
+      </tableProxy>
+    </tableProxies>
+    <joins/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="S970" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="70" y="30"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

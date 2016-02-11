@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="ZAT_BSEG" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="ZAT_BSEG"/>
+  <metadata changedAt="2015-03-26 13:54:32.866"/>
+  <attributes>
+    <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="MANDT"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="MANDT"/>
+    </attribute>
+    <attribute id="BUKRS" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="BUKRS"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="BUKRS"/>
+    </attribute>
+    <attribute id="BELNR" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="BELNR"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="BELNR"/>
+    </attribute>
+    <attribute id="GJAHR" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="GJAHR"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="GJAHR"/>
+    </attribute>
+    <attribute id="BUZID" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="BUZID"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="BUZID"/>
+    </attribute>
+    <attribute id="BSCHL" order="6" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="BSCHL"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="BSCHL"/>
+    </attribute>
+    <attribute id="KOART" order="7" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="KOART"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="KOART"/>
+    </attribute>
+    <attribute id="SHKZG" order="8" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="SHKZG"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="SHKZG"/>
+    </attribute>
+    <attribute id="MWSKZ" order="9" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="MWSKZ"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="MWSKZ"/>
+    </attribute>
+    <attribute id="DMBTR" order="10" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="DMBTR"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="DMBTR"/>
+    </attribute>
+    <attribute id="KUNNR" order="11" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="KUNNR"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="KUNNR"/>
+    </attribute>
+    <attribute id="KTOSL" order="12" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="KTOSL"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="KTOSL"/>
+    </attribute>
+    <attribute id="WRBTR" order="13" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="WRBTR"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="WRBTR"/>
+    </attribute>
+    <attribute id="FWBAS" order="14" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="FWBAS"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="FWBAS"/>
+    </attribute>
+    <attribute id="TXBHW" order="15" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="TXBHW"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="TXBHW"/>
+    </attribute>
+    <attribute id="HWBAS" order="16" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="HWBAS"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="HWBAS"/>
+    </attribute>
+    <attribute id="MWSTS" order="17" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="MWSTS"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="BSEG" columnName="MWSTS"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="BSEG"/>
+      </tableProxy>
+    </tableProxies>
+    <joins/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="BSEG" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="70" y="30"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

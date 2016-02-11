@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cube:cube xmlns:Cube="http://www.sap.com/ndb/BiModelCube.ecore" schemaVersion="1.5" id="AN_CUST_SALES" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled">
+  <origin/>
+  <descriptions defaultDescription="AN_CUST_SALES"/>
+  <metadata changedAt="2016-01-14 18:46:50.321"/>
+  <localVariables>
+    <variable id="C_SPMON">
+      <descriptions defaultDescription="C_SPMON"/>
+      <variableProperties datatype="CHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="SPMON"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="C_DATAB">
+      <descriptions defaultDescription="C_DATAB"/>
+      <variableProperties datatype="CHAR" defaultValue="" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="DATAB" resourceUri="/zzsd_hana/attributeviews/AT_CUSTOMER"/>
+        </valueDomain>
+        <selection multiLine="false" type="Range"/>
+      </variableProperties>
+    </variable>
+    <variable id="C_DATBI">
+      <descriptions defaultDescription="C_DATBI"/>
+      <variableProperties datatype="CHAR" defaultValue="" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="DATBI" resourceUri="/zzsd_hana/attributeviews/AT_CUSTOMER"/>
+        </valueDomain>
+        <selection multiLine="false" type="Range"/>
+      </variableProperties>
+    </variable>
+    <variable id="C_VKBUR">
+      <descriptions defaultDescription="C_VKBUR"/>
+      <variableProperties datatype="CHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="VKBUR" resourceUri="/zzsd_hana/attributeviews/AT_CUSTOMER"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="C_VKORG">
+      <descriptions defaultDescription="C_VKORG"/>
+      <variableProperties datatype="CHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="VKORG" resourceUri="/zzsd_hana/attributeviews/AT_CUSTOMER"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="C_VTWEG">
+      <descriptions defaultDescription="C_VTWEG"/>
+      <variableProperties datatype="CHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="VTWEG" resourceUri="/zzsd_hana/attributeviews/AT_CUSTOMER"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="C_SPART">
+      <descriptions defaultDescription="C_SPART"/>
+      <variableProperties datatype="CHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="SPART" resourceUri="/zzsd_hana/attributeviews/AT_CUSTOMER"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="C_HKUNNR">
+      <descriptions defaultDescription="C_HKUNNR"/>
+      <variableProperties datatype="CHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="HKUNNR" resourceUri="/zzsd_hana/attributeviews/AT_CUSTOMER"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="C_MATNR">
+      <descriptions defaultDescription="C_MATNR"/>
+      <variableProperties datatype="CHAR" mandatory="false">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="C_PROD">
+      <descriptions defaultDescription="C_PROD"/>
+      <variableProperties datatype="CHAR" mandatory="false">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="C_KUNNR">
+      <descriptions defaultDescription="C_KUNNR"/>
+      <variableProperties datatype="CHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="KUNNR" resourceUri="/zzsd_hana/attributeviews/AT_CUSTOMER"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <privateMeasureGroup id="MeasureGroup">
+    <attributes>
+      <attribute id="SPMON" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPMON"/>
+        <localVariable>#C_SPMON</localVariable>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SPMON"/>
+      </attribute>
+      <attribute id="MANDT_1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT_1"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="MANDT"/>
+      </attribute>
+      <attribute id="PKUNAG" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PKUNAG"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="PKUNAG"/>
+      </attribute>
+      <attribute id="VKORG_1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKORG_1"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="VKORG"/>
+      </attribute>
+      <attribute id="VTWEG_1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VTWEG_1"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="VTWEG"/>
+      </attribute>
+      <attribute id="SPART_1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPART_1"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SPART"/>
+      </attribute>
+      <attribute id="MATNR" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATNR"/>
+        <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="MATNR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="MON" hidden="false" order="8" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MON"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="2">
+          <formula>rightstr(&quot;SPMON&quot;,2)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies>
+        <tableProxy centralTable="true">
+          <table schemaName="SAPR3" columnObjectName="S970"/>
+        </tableProxy>
+      </tableProxies>
+      <joins/>
+      <layout>
+        <shapes>
+          <shape modelObjectName="S970" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+            <upperLeftCorner x="70" y="30"/>
+          </shape>
+        </shapes>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="ZZGRS" order="2" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZGRS"/>
+        <measureMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZGRS"/>
+      </measure>
+      <measure id="ZZSAMT" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZSAMT"/>
+        <measureMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZSAMT"/>
+      </measure>
+      <measure id="ZZVOL" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZVOL"/>
+        <measureMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZVOL"/>
+      </measure>
+      <measure id="ZZYTDGRS" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZYTDGRS"/>
+        <measureMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZYTDGRS"/>
+      </measure>
+      <measure id="ZZYTDSAMT" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZYTDSAMT"/>
+        <measureMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZYTDSAMT"/>
+      </measure>
+      <measure id="ZZYTDVOL" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZYTDVOL"/>
+        <measureMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZYTDVOL"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <sharedDimensions>
+      <logicalJoin associatedObjectUri="/zzsd_hana/attributeviews/AT_CUSTOMER">
+        <attributes>
+          <attributeRef>#MANDT_1</attributeRef>
+          <attributeRef>#PKUNAG</attributeRef>
+          <attributeRef>#VKORG_1</attributeRef>
+          <attributeRef>#VTWEG_1</attributeRef>
+          <attributeRef>#SPART_1</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>KUNNR</attributeName>
+          <attributeName>VKORG</attributeName>
+          <attributeName>VTWEG</attributeName>
+          <attributeName>SPART</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinOperator="Equal" joinType="referential"/>
+        <associatedAttributeFeatures>
+          <attributeReference attributeName="DATAB">
+            <localVariable>#C_DATAB</localVariable>
+          </attributeReference>
+          <attributeReference attributeName="DATBI">
+            <localVariable>#C_DATBI</localVariable>
+          </attributeReference>
+          <attributeReference attributeName="VKBUR">
+            <localVariable>#C_VKBUR</localVariable>
+          </attributeReference>
+          <attributeReference attributeName="VKORG">
+            <localVariable>#C_VKORG</localVariable>
+          </attributeReference>
+          <attributeReference attributeName="VTWEG">
+            <localVariable>#C_VTWEG</localVariable>
+          </attributeReference>
+          <attributeReference attributeName="SPART">
+            <localVariable>#C_SPART</localVariable>
+          </attributeReference>
+          <attributeReference attributeName="HKUNNR">
+            <localVariable>#C_HKUNNR</localVariable>
+          </attributeReference>
+          <attributeReference attributeName="KUNNR">
+            <localVariable>#C_KUNNR</localVariable>
+          </attributeReference>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="/zzsd_hana/attributeviews/AT_PROD">
+        <attributes>
+          <attributeRef>#MATNR</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MATNR</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="referential"/>
+        <associatedAttributeFeatures/>
+      </logicalJoin>
+    </sharedDimensions>
+    <layout>
+      <shapes>
+        <shape modelObjectName="MEASURE_GROUP" modelObjectType="repository">
+          <upperLeftCorner x="311" y="31"/>
+        </shape>
+        <shape modelObjectName="/zzsd_hana/attributeviews/AT_CUSTOMER" modelObjectType="repository">
+          <upperLeftCorner x="2" y="36"/>
+        </shape>
+        <shape modelObjectName="/zzsd_hana/attributeviews/AT_PROD" modelObjectType="repository">
+          <upperLeftCorner x="623" y="30"/>
+        </shape>
+        <shape modelObjectName="LogicalView" modelObjectNameSpace="MeasureGroup" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateMeasureGroup>
+</Cube:cube>

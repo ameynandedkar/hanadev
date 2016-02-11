@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UDE:Procedure xmlns:UDE="http://www.sap.com/ndb/SQLCoreModelUDE.ecore" schemaVersion="1" id="ZTEST99" accessMode="ReadOnly">
+  <origin/>
+  <descriptions defaultDescription="ZTEST99"/>
+  <metadata changedAt="2014-09-11 14:52:40.932" createdAt="2014-09-11 14:52:31.043"/>
+  <schema id="_SYS_BIC"/>
+  <definition>
+ /********* Begin Procedure Script ************/ 
+BEGIN 
+
+END;
+ /********* End Procedure Script ************/</definition>
+  <defaultSchema schemaName="ASIANPAINTS"/>
+</UDE:Procedure>

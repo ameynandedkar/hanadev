@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="CV_SALES_CY_LY" applyPrivilegeType="ANALYTIC_PRIVILEGE" cacheInvalidationPeriod="NONE" checkAnalyticPrivileges="true" defaultClient="crossClient" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <origin/>
+  <descriptions defaultDescription="CV_SALES_CY_LY"/>
+  <metadata changedAt="2016-01-04 11:28:46.287"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="AT_CUSTOMER" type="ATTRIBUTE_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/zzsd_hana/attributeviews/AT_CUSTOMER</resourceUri>
+    </DataSource>
+    <DataSource id="S970" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="SAPR3" columnObjectName="S970"/>
+    </DataSource>
+    <DataSource id="MAKT" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="SAPR3" columnObjectName="MAKT"/>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="VTWEG"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="HKUNNR"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="DATAB"/>
+        <viewAttribute id="DATBI"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#AT_CUSTOMER">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG" source="VTWEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HKUNNR" source="HKUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATAB" source="DATAB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATBI" source="DATBI"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SPMON"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="VTWEG"/>
+        <viewAttribute id="PKUNAG"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="ZZSAMT"/>
+        <viewAttribute id="ZZVOL"/>
+        <viewAttribute id="ZZYTDSAMT"/>
+        <viewAttribute id="ZZYTDVOL"/>
+        <viewAttribute id="PERIV"/>
+        <viewAttribute id="SPBUP"/>
+        <viewAttribute id="SPTAG"/>
+        <viewAttribute id="SPWOC"/>
+        <viewAttribute id="SSOUR"/>
+        <viewAttribute id="VRSIO"/>
+        <viewAttribute id="ZZGRS"/>
+        <viewAttribute id="ZZYTDGRS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#S970">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPMON" source="SPMON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG" source="VTWEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PKUNAG" source="PKUNAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZSAMT" source="ZZSAMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZVOL" source="ZZVOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZYTDSAMT" source="ZZYTDSAMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZYTDVOL" source="ZZYTDVOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIV" source="PERIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPBUP" source="SPBUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPTAG" source="SPTAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPWOC" source="SPWOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SSOUR" source="SSOUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VRSIO" source="VRSIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZGRS" source="ZZGRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZYTDGRS" source="ZZYTDGRS"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="HKUNNR"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="DATAB"/>
+        <viewAttribute id="DATBI"/>
+        <viewAttribute id="SPMON"/>
+        <viewAttribute id="SPART_1"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="ZZSAMT"/>
+        <viewAttribute id="ZZVOL"/>
+        <viewAttribute id="ZZYTDSAMT"/>
+        <viewAttribute id="ZZYTDVOL"/>
+        <viewAttribute id="MANDT_1"/>
+        <viewAttribute id="VKORG_1"/>
+        <viewAttribute id="VTWEG_1"/>
+        <viewAttribute id="PKUNAG"/>
+        <viewAttribute id="PERIV"/>
+        <viewAttribute id="SPBUP"/>
+        <viewAttribute id="SPTAG"/>
+        <viewAttribute id="SPWOC"/>
+        <viewAttribute id="SSOUR"/>
+        <viewAttribute id="VRSIO"/>
+        <viewAttribute id="ZZGRS"/>
+        <viewAttribute id="ZZYTDGRS"/>
+        <viewAttribute hidden="true" id="JOIN$KUNNR$PKUNAG"/>
+        <viewAttribute hidden="true" id="JOIN$MANDT$MANDT"/>
+        <viewAttribute hidden="true" id="JOIN$VKORG$VKORG"/>
+        <viewAttribute hidden="true" id="JOIN$VTWEG$VTWEG"/>
+        <viewAttribute hidden="true" id="JOIN$SPART$SPART"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HKUNNR" source="HKUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATAB" source="DATAB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATBI" source="DATBI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$KUNNR$PKUNAG" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VKORG$VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VTWEG$VTWEG" source="VTWEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SPART$SPART" source="SPART"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPMON" source="SPMON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART_1" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZSAMT" source="ZZSAMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZVOL" source="ZZVOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZYTDSAMT" source="ZZYTDSAMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZYTDVOL" source="ZZYTDVOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT_1" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG_1" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG_1" source="VTWEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PKUNAG" source="PKUNAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIV" source="PERIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPBUP" source="SPBUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPTAG" source="SPTAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPWOC" source="SPWOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SSOUR" source="SSOUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VRSIO" source="VRSIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZGRS" source="ZZGRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZYTDGRS" source="ZZYTDGRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$KUNNR$PKUNAG" source="PKUNAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VKORG$VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VTWEG$VTWEG" source="VTWEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SPART$SPART" source="SPART"/>
+      </input>
+      <joinAttribute name="JOIN$MANDT$MANDT"/>
+      <joinAttribute name="JOIN$KUNNR$PKUNAG"/>
+      <joinAttribute name="JOIN$VKORG$VKORG"/>
+      <joinAttribute name="JOIN$VTWEG$VTWEG"/>
+      <joinAttribute name="JOIN$SPART$SPART"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="MAKTX"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#MAKT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MAKTX" source="MAKTX"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="MAKTX"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="HKUNNR"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="DATAB"/>
+        <viewAttribute id="DATBI"/>
+        <viewAttribute id="SPMON"/>
+        <viewAttribute id="SPART_1"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="ZZSAMT"/>
+        <viewAttribute id="ZZVOL"/>
+        <viewAttribute id="ZZYTDSAMT"/>
+        <viewAttribute id="ZZYTDVOL"/>
+        <viewAttribute id="MANDT_1"/>
+        <viewAttribute id="VKORG_1"/>
+        <viewAttribute id="VTWEG_1"/>
+        <viewAttribute id="PKUNAG"/>
+        <viewAttribute id="PERIV"/>
+        <viewAttribute id="SPBUP"/>
+        <viewAttribute id="SPTAG"/>
+        <viewAttribute id="SPWOC"/>
+        <viewAttribute id="SSOUR"/>
+        <viewAttribute id="VRSIO"/>
+        <viewAttribute id="ZZGRS"/>
+        <viewAttribute id="ZZYTDGRS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HKUNNR" source="HKUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATAB" source="DATAB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATBI" source="DATBI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPMON" source="SPMON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART_1" source="SPART_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZSAMT" source="ZZSAMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZVOL" source="ZZVOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZYTDSAMT" source="ZZYTDSAMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZYTDVOL" source="ZZYTDVOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT_1" source="MANDT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG_1" source="VKORG_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG_1" source="VTWEG_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PKUNAG" source="PKUNAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIV" source="PERIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPBUP" source="SPBUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPTAG" source="SPTAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPWOC" source="SPWOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SSOUR" source="SSOUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VRSIO" source="VRSIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZGRS" source="ZZGRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZYTDGRS" source="ZZYTDGRS"/>
+      </input>
+      <input node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MAKTX" source="MAKTX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT_1" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      </input>
+      <joinAttribute name="MANDT_1"/>
+      <joinAttribute name="MATNR"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_2">
+    <descriptions/>
+    <attributes>
+      <attribute id="MATNR" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATNR"/>
+        <keyMapping columnObjectName="Join_2" columnName="MATNR"/>
+      </attribute>
+      <attribute id="PKUNAG" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PKUNAG"/>
+        <keyMapping columnObjectName="Join_2" columnName="PKUNAG"/>
+      </attribute>
+      <attribute id="VKORG_1" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKORG_1"/>
+        <keyMapping columnObjectName="Join_2" columnName="VKORG_1"/>
+      </attribute>
+      <attribute id="VTWEG_1" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VTWEG_1"/>
+        <keyMapping columnObjectName="Join_2" columnName="VTWEG_1"/>
+      </attribute>
+      <attribute id="SPMON" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPMON"/>
+        <keyMapping columnObjectName="Join_2" columnName="SPMON"/>
+      </attribute>
+      <attribute id="HKUNNR" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HKUNNR"/>
+        <keyMapping columnObjectName="Join_2" columnName="HKUNNR"/>
+      </attribute>
+      <attribute id="VKBUR" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKBUR"/>
+        <keyMapping columnObjectName="Join_2" columnName="VKBUR"/>
+      </attribute>
+      <attribute id="SPART_1" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPART_1"/>
+        <keyMapping columnObjectName="Join_2" columnName="SPART_1"/>
+      </attribute>
+      <attribute id="MAKTX" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MAKTX"/>
+        <keyMapping columnObjectName="Join_2" columnName="MAKTX"/>
+      </attribute>
+      <attribute id="NAME1" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NAME1"/>
+        <keyMapping columnObjectName="Join_2" columnName="NAME1"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="PACK" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PACK"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="3">
+          <formula>rightstr(&quot;MATNR&quot;,3)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="PROD" hidden="false" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PROD"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="4">
+          <formula>leftstr(&quot;MATNR&quot;,4)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="SHADE" hidden="false" order="3" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHADE"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="4">
+          <formula>midstr(&quot;MATNR&quot;,5,4)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="ZZSAMT" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZSAMT"/>
+        <measureMapping columnObjectName="Join_2" columnName="ZZSAMT"/>
+      </measure>
+      <measure id="ZZVOL" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZVOL"/>
+        <measureMapping columnObjectName="Join_2" columnName="ZZVOL"/>
+      </measure>
+      <measure id="ZZYTDSAMT" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZYTDSAMT"/>
+        <measureMapping columnObjectName="Join_2" columnName="ZZYTDSAMT"/>
+      </measure>
+      <measure id="ZZYTDVOL" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZYTDVOL"/>
+        <measureMapping columnObjectName="Join_2" columnName="ZZYTDVOL"/>
+      </measure>
+      <measure id="ZZYTDGRS" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZYTDGRS"/>
+        <measureMapping columnObjectName="Join_2" columnName="ZZYTDGRS"/>
+      </measure>
+      <measure id="ZZGRS" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZZGRS"/>
+        <measureMapping columnObjectName="Join_2" columnName="ZZGRS"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="H1">
+        <attributeRef xsi:type="DataFoundation:Attribute">#PKUNAG</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#HKUNNR</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="H1" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="LEVEL_NAME">
+            <descriptions defaultDescription="H1"/>
+            <levels>
+              <level levelAttribute="#PKUNAG" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#PKUNAG"/>
+              <level levelAttribute="#HKUNNR" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#HKUNNR"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="191" y="60"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="160" y="350"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="10" y="350"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="80" y="240"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="260" y="249"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="191" y="140"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

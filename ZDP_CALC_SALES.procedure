@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UDE:Procedure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DataTypes="http://www.sap.com/ndb/SQLCoreModelDataTypes.ecore" xmlns:UDE="http://www.sap.com/ndb/SQLCoreModelUDE.ecore" schemaVersion="1" id="ZDP_CALC_SALES" runWithInvokerPrivileges="false" accessMode="ReadOnly">
+  <origin/>
+  <descriptions defaultDescription="ZDP_CALC_SALES"/>
+  <metadata changedAt="2015-09-07 23:34:09.548" createdAt="2014-09-15 17:30:18.634"/>
+  <schema id="_SYS_BIC"/>
+  <definition>
+ /********* Begin Procedure Script ************/ 
+BEGIN 
+SALESDATA = select sum(zzgrs) as MTD_CY, sum(zzytdgrs) as YTD_CY, kunnr from 
+&quot;_SYS_BIC&quot;.&quot;zzsd_hana/AT_KNVV_S970&quot;  where
+spmon = :SPMON
+and vkbur = :VKBUR
+and vkorg = :VKORG
+and vtweg = :VTWEG
+and spart = :SPART group by kunnr; 
+--select * from :SALESDATA;
+--select VKBUR from dummy;
+TT_ZALES_DATA = SELECT * from &quot;PUBLIC&quot;.&quot;zzsd_hana::AT_KNVV_S970&quot; WHERE (VKORG = '1000')  AND  (VKBUR = '1543')  AND SPMON IN ('200401','200301') AND SPRAS ='E' 
+AND '20141209' > DATAB AND '20141209' &lt; DATBI;
+    iv_cy = select
+        kunnr,
+        vkbur,
+        vkorg,
+        vtweg,
+        spart,
+        hkunnr,
+        prod,
+        shade,
+        pack,
+        matnr,
+        sum(zzvol) as zzvol,
+        sum(zzgrs) as zzgrs,
+        sum(zzsamt) as zzsamt,
+        sum(zzytdvol) + sum(zzvol) as zzytdvol,
+        sum(zzytdgrs) + sum(zzgrs) as zzytdgrs,
+        sum(zzytdsamt) + sum(zzsamt) as zzytdsamt
+        from :TT_ZALES_DATA
+        where spmon = '200401'
+        group by KUNNR, vkbur, vkorg, vtweg, hkunnr, spart, prod, shade, pack, matnr;
+
+    iv_ly = select
+        kunnr,
+        vkbur,
+        vkorg,
+        vtweg,
+        spart,
+        hkunnr,
+        prod,
+        shade,
+        pack,
+        matnr,
+        sum(zzvol) as zzvol,
+        sum(zzgrs) as zzgrs,
+        sum(zzsamt) as zzsamt,
+        sum(zzytdvol) + sum(zzvol) as zzytdvol,
+        sum(zzytdgrs) + sum(zzgrs) as zzytdgrs,
+        sum(zzytdsamt) + sum(zzsamt) as zzytdsamt
+        from :TT_ZALES_DATA
+        where spmon = '200301'
+        group by KUNNR, vkbur, vkorg, vtweg, spart, hkunnr, prod, shade, pack, matnr;
+
+	iv_union = 
+	select kunnr, vkbur, vkorg, vtweg, spart, hkunnr, prod, shade, pack, matnr from :iv_cy 
+	union
+	select kunnr, vkbur, vkorg, vtweg, spart, hkunnr, prod, shade, pack, matnr from :iv_ly;
+	
+	iv_data = select
+	a.kunnr, a.vkbur, a.vkorg, a.vtweg, a.spart, a.hkunnr, a.prod, a.shade, a.pack, a.matnr,
+	case when b.zzvol is null then '0' else b.zzvol end as zzvol_cy, 
+	case when c.zzvol is null then '0' else c.zzvol end as zzvol_ly,
+	case when b.zzgrs is null then '0' else b.zzgrs end as zzgrs_cy, 
+	case when c.zzgrs is null then '0' else c.zzgrs end as zzgrs_ly, 
+	case when b.zzsamt is null then '0' else b.zzsamt end as zzsamt_cy, 
+	case when c.zzsamt is null then '0' else c.zzsamt end as zzsamt_ly, 
+	case when b.zzytdvol is null then '0' else b.zzytdvol end as zzytdvol_cy,
+	case when c.zzytdvol is null then '0' else c.zzytdvol end as zzytdvol_ly, 
+	case when b.zzytdgrs is null then '0' else b.zzytdgrs end as zzytdgrs_cy,
+	case when c.zzytdgrs is null then '0' else c.zzytdgrs end as zzytdgrs_ly, 
+	case when b.zzytdsamt is null then '0' else b.zzytdsamt end as zzytdsamt_cy, 
+	case when c.zzytdsamt is null then '0' else c.zzytdsamt end as zzytdsamt_ly
+	from :iv_union a left outer join :iv_cy b on a.kunnr = b.kunnr and a.vkbur = b.vkbur and a.vtweg = b.vtweg and a.spart = b.spart and a.hkunnr = b.hkunnr and a.matnr = b.matnr
+	left outer join :iv_ly c on a.kunnr = c.kunnr and a.vkbur = c.vkbur and a.vkorg = c.vkorg and a.vtweg = c.vtweg and a.spart = c.spart and a.hkunnr = c.hkunnr and a.matnr = c.matnr;  
+
+	iv_final = select
+	kunnr, vkbur, vkorg, vtweg, spart, hkunnr, prod, shade, pack, matnr, 
+	zzvol_cy, zzvol_ly, zzgrs_cy, zzgrs_ly, zzsamt_cy, zzsamt_ly, 
+	zzytdvol_cy, zzytdvol_ly, zzytdgrs_cy, zzytdgrs_ly, zzytdsamt_cy, zzytdsamt_ly,
+	case when zzvol_ly = 0 then 100 else (zzvol_cy - zzvol_ly)/zzvol_ly * 100 end as vol_gr,
+	case when zzgrs_ly = 0 then 100 else (zzgrs_cy - zzgrs_ly)/zzgrs_ly * 100 end as grs_gr,
+	case when zzsamt_ly = 0 then 100 else (zzsamt_cy - zzsamt_ly)/zzsamt_ly * 100 end as samt_gr,
+	case when zzytdvol_ly = 0 then 100 else (zzytdvol_cy - zzytdvol_ly)/zzytdvol_ly * 100 end as ytd_vol_gr,
+	case when zzytdgrs_ly = 0 then 100 else (zzytdgrs_cy - zzytdgrs_ly)/zzytdgrs_ly * 100 end as ytd_grs_gr,
+	case when zzytdsamt_ly = 0 then 100 else (zzytdsamt_cy - zzytdsamt_ly)/zzytdsamt_ly * 100 end as ytd_samt_gr 
+	from :iv_data;
+select * from :iv_final;
+END;
+ /********* End Procedure Script ************/</definition>
+  <defaultSchema schemaName="ASIAN_PAINTS"/>
+  <parameters id="SPMON">
+    <type xsi:type="DataTypes:CharacterStringSQLDataType" id="NVARCHAR" length="6"/>
+  </parameters>
+  <parameters id="VKBUR">
+    <type xsi:type="DataTypes:CharacterStringSQLDataType" id="NVARCHAR" length="4"/>
+  </parameters>
+  <parameters id="VKORG">
+    <type xsi:type="DataTypes:CharacterStringSQLDataType" id="NVARCHAR" length="4"/>
+  </parameters>
+  <parameters id="VTWEG">
+    <type xsi:type="DataTypes:CharacterStringSQLDataType" id="NVARCHAR" length="2"/>
+  </parameters>
+  <parameters id="SPART">
+    <type xsi:type="DataTypes:CharacterStringSQLDataType" id="NVARCHAR" length="2"/>
+  </parameters>
+  <parameters id="DATATYPE">
+    <type xsi:type="DataTypes:CharacterStringSQLDataType" id="NVARCHAR" length="5"/>
+  </parameters>
+</UDE:Procedure>

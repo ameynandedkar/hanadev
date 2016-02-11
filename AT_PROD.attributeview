@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_PROD" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_PROD"/>
+  <metadata changedAt="2016-01-14 18:45:18.848"/>
+  <attributes>
+    <attribute id="MATNR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="MATNR"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="MAKT" columnName="MATNR"/>
+    </attribute>
+    <attribute id="MAKTX" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="MAKTX"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="MAKT" columnName="MAKTX"/>
+    </attribute>
+    <attribute id="OBJEK" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="OBJEK"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="AUSP" columnName="OBJEK"/>
+    </attribute>
+    <attribute id="ATWRT" key="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ATWRT"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="AUSP" columnName="ATWRT"/>
+    </attribute>
+    <attribute id="ATWTB" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ATWTB"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="CAWNT" columnName="ATWTB"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="PROD" hidden="false" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="PROD"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="4">
+        <formula>leftstr(&quot;MATNR&quot;,4)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="SHADE" hidden="false" order="7" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="SHADE"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="4">
+        <formula>midstr(&quot;MATNR&quot;,5,4)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="PACK" hidden="false" order="8" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="PACK"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="3">
+        <formula>rightstr(&quot;MATNR&quot;,3)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="CABN"/>
+        <columnFilter columnName="ATNAM">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="PRODCODE"/>
+        </columnFilter>
+        <columnFilter columnName="MANDT">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="333"/>
+        </columnFilter>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="AUSP"/>
+        <columnFilter columnName="ATWRT">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" operator="NL" including="false"/>
+        </columnFilter>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="CAWN"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="CAWNT"/>
+        <columnFilter columnName="SPRAS">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="E"/>
+        </columnFilter>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="MAKT"/>
+        <columnFilter columnName="MANDT">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="333"/>
+        </columnFilter>
+      </tableProxy>
+    </tableProxies>
+    <joins>
+      <join>
+        <leftTable schemaName="SAPR3" columnObjectName="CABN"/>
+        <rightTable schemaName="SAPR3" columnObjectName="AUSP"/>
+        <leftColumns>
+          <columnName>ATINN</columnName>
+          <columnName>MANDT</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>ATINN</columnName>
+          <columnName>MANDT</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+      <join>
+        <leftTable schemaName="SAPR3" columnObjectName="AUSP"/>
+        <rightTable schemaName="SAPR3" columnObjectName="CAWN"/>
+        <leftColumns>
+          <columnName>MANDT</columnName>
+          <columnName>ATINN</columnName>
+          <columnName>ATWRT</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>MANDT</columnName>
+          <columnName>ATINN</columnName>
+          <columnName>ATWRT</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+      <join>
+        <leftTable schemaName="SAPR3" columnObjectName="CAWN"/>
+        <rightTable schemaName="SAPR3" columnObjectName="CAWNT"/>
+        <leftColumns>
+          <columnName>MANDT</columnName>
+          <columnName>ATINN</columnName>
+          <columnName>ATZHL</columnName>
+          <columnName>ADZHL</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>MANDT</columnName>
+          <columnName>ATINN</columnName>
+          <columnName>ATZHL</columnName>
+          <columnName>ADZHL</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+      <join>
+        <leftTable schemaName="SAPR3" columnObjectName="MAKT"/>
+        <rightTable schemaName="SAPR3" columnObjectName="AUSP"/>
+        <leftColumns>
+          <columnName>MANDT</columnName>
+          <columnName>MATNR</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>MANDT</columnName>
+          <columnName>OBJEK</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+    </joins>
+    <layout>
+      <shapes>
+        <shape modelObjectName="CABN" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="36" y="176"/>
+        </shape>
+        <shape modelObjectName="AUSP" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="310" y="30"/>
+        </shape>
+        <shape modelObjectName="CAWN" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="550" y="30"/>
+        </shape>
+        <shape modelObjectName="CAWNT" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="790" y="30"/>
+        </shape>
+        <shape modelObjectName="MAKT" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="2" y="5"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

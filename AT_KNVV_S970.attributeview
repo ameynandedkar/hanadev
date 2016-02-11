@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_KNVV_S970" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_KNVV_S970"/>
+  <metadata changedAt="2014-12-09 12:55:36.795"/>
+  <attributes>
+    <attribute id="MANDT" hidden="true" order="1" attributeHierarchyActive="false" displayAttribute="false" key="true">
+      <descriptions defaultDescription="MANDT"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="KNVV" columnName="MANDT"/>
+    </attribute>
+    <attribute id="KUNNR" order="2" attributeHierarchyActive="false" displayAttribute="false" key="true">
+      <descriptions defaultDescription="KUNNR"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="KNVV" columnName="KUNNR"/>
+    </attribute>
+    <attribute id="DATAB" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="DATAB"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="KNVH" columnName="DATAB"/>
+    </attribute>
+    <attribute id="DATBI" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="DATBI"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="KNVH" columnName="DATBI"/>
+    </attribute>
+    <attribute id="HKUNNR" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="HKUNNR"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="KNVH" columnName="HKUNNR"/>
+    </attribute>
+    <attribute id="NAME1" order="6" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="NAME1"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="KNA1" columnName="NAME1"/>
+    </attribute>
+    <attribute id="VKORG" order="7" attributeHierarchyActive="false" displayAttribute="false" key="true">
+      <descriptions defaultDescription="VKORG"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="KNVV" columnName="VKORG"/>
+    </attribute>
+    <attribute id="VTWEG" order="8" attributeHierarchyActive="false" displayAttribute="false" key="true">
+      <descriptions defaultDescription="VTWEG"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="KNVV" columnName="VTWEG"/>
+    </attribute>
+    <attribute id="SPART" order="9" attributeHierarchyActive="false" displayAttribute="false" key="true">
+      <descriptions defaultDescription="SPART"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="KNVV" columnName="SPART"/>
+    </attribute>
+    <attribute id="VKBUR" order="10" attributeHierarchyActive="false" displayAttribute="false" key="true">
+      <descriptions defaultDescription="VKBUR"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="KNVV" columnName="VKBUR"/>
+    </attribute>
+    <attribute id="SSOUR" order="11" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="SSOUR"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SSOUR"/>
+    </attribute>
+    <attribute id="VRSIO" order="12" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="VRSIO"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="VRSIO"/>
+    </attribute>
+    <attribute id="SPMON" order="13" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="SPMON"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SPMON"/>
+    </attribute>
+    <attribute id="SPTAG" order="14" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="SPTAG"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SPTAG"/>
+    </attribute>
+    <attribute id="SPWOC" order="15" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="SPWOC"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SPWOC"/>
+    </attribute>
+    <attribute id="SPBUP" order="16" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="SPBUP"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="SPBUP"/>
+    </attribute>
+    <attribute id="MATNR" order="17" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="MATNR"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="MATNR"/>
+    </attribute>
+    <attribute id="SPRAS" order="18" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="SPRAS"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="MAKT" columnName="SPRAS"/>
+    </attribute>
+    <attribute id="MAKTX" order="19" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="MAKTX"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="MAKT" columnName="MAKTX"/>
+    </attribute>
+    <attribute id="PERIV" order="20" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="PERIV"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="PERIV"/>
+    </attribute>
+    <attribute id="ZZGRS" order="21" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ZZGRS"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZGRS"/>
+    </attribute>
+    <attribute id="ZZSAMT" order="22" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ZZSAMT"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZSAMT"/>
+    </attribute>
+    <attribute id="ZZVOL" order="23" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ZZVOL"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZVOL"/>
+    </attribute>
+    <attribute id="ZZYTDGRS" order="24" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ZZYTDGRS"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZYTDGRS"/>
+    </attribute>
+    <attribute id="ZZYTDSAMT" order="25" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ZZYTDSAMT"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZYTDSAMT"/>
+    </attribute>
+    <attribute id="ZZYTDVOL" order="26" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ZZYTDVOL"/>
+      <keyMapping schemaName="SAPR3" columnObjectName="S970" columnName="ZZYTDVOL"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="PROD" hidden="false" order="27" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="PROD"/>
+      <keyCalculation datatype="VARCHAR" length="4" scale="0">
+        <formula>leftstr(&quot;MATNR&quot;,4)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="SHADE" hidden="false" order="28" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="SHADE"/>
+      <keyCalculation datatype="VARCHAR" length="4" scale="0">
+        <formula>midstr(&quot;MATNR&quot;,5,4)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="PACK" hidden="false" order="29" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="PACK"/>
+      <keyCalculation datatype="VARCHAR" length="3" scale="0">
+        <formula>rightstr(&quot;MATNR&quot;,3)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="KNVV"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="S970"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="MAKT"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="KNVH"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="SAPR3" columnObjectName="KNA1"/>
+      </tableProxy>
+    </tableProxies>
+    <joins>
+      <join>
+        <leftTable schemaName="SAPR3" columnObjectName="KNVV"/>
+        <rightTable schemaName="SAPR3" columnObjectName="S970"/>
+        <leftColumns>
+          <columnName>KUNNR</columnName>
+          <columnName>VKORG</columnName>
+          <columnName>VTWEG</columnName>
+          <columnName>SPART</columnName>
+          <columnName>MANDT</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>PKUNAG</columnName>
+          <columnName>VKORG</columnName>
+          <columnName>VTWEG</columnName>
+          <columnName>SPART</columnName>
+          <columnName>MANDT</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+      <join>
+        <leftTable schemaName="SAPR3" columnObjectName="S970"/>
+        <rightTable schemaName="SAPR3" columnObjectName="MAKT"/>
+        <leftColumns>
+          <columnName>MANDT</columnName>
+          <columnName>MATNR</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>MANDT</columnName>
+          <columnName>MATNR</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+      <join>
+        <leftTable schemaName="SAPR3" columnObjectName="KNVH"/>
+        <rightTable schemaName="SAPR3" columnObjectName="KNVV"/>
+        <leftColumns>
+          <columnName>MANDT</columnName>
+          <columnName>KUNNR</columnName>
+          <columnName>VKORG</columnName>
+          <columnName>VTWEG</columnName>
+          <columnName>SPART</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>MANDT</columnName>
+          <columnName>KUNNR</columnName>
+          <columnName>VKORG</columnName>
+          <columnName>VTWEG</columnName>
+          <columnName>SPART</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+      <join>
+        <leftTable schemaName="SAPR3" columnObjectName="KNVH"/>
+        <rightTable schemaName="SAPR3" columnObjectName="KNA1"/>
+        <leftColumns>
+          <columnName>MANDT</columnName>
+          <columnName>KUNNR</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>MANDT</columnName>
+          <columnName>KUNNR</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+    </joins>
+    <layout>
+      <shapes>
+        <shape modelObjectName="KNVV" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="225" y="31"/>
+        </shape>
+        <shape modelObjectName="S970" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="420" y="31"/>
+        </shape>
+        <shape modelObjectName="MAKT" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="637" y="52"/>
+        </shape>
+        <shape modelObjectName="KNVH" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="14" y="31"/>
+        </shape>
+        <shape modelObjectName="KNA1" modelObjectNameSpace="SAPR3" modelObjectType="catalog">
+          <upperLeftCorner x="853" y="30"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>
